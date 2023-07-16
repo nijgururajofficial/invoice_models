@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create Invoice</h2>
+
+<form method="POST" action="{% url 'invoice_list' %}">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="date">Date</label>
+    <input type="date" class="form-control" id="date" name="date" required>
+  </div>
+  <div class="form-group">
+    <label for="invoice_no">Invoice No</label>
+    <input type="text" class="form-control" id="invoice_no" name="invoice_no" required>
+  </div>
+  <div class="form-group">
+    <label for="customer_name">Customer Name</label>
+    <input type="text" class="form-control" id="customer_name" name="customer_name" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
