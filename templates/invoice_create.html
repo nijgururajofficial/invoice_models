@@ -17,6 +17,45 @@
     <label for="customer_name">Customer Name</label>
     <input type="text" class="form-control" id="customer_name" name="customer_name" required>
   </div>
+
+  <div id="details-formset">
+    {% for form in formset %}
+      <div class="formset-row">
+        {{ form.management_form }}
+        <div class="form-group">
+          <label for="{{ form.description.id_for_label }}">Description</label>
+          {{ form.description }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.quantity.id_for_label }}">Quantity</label>
+          {{ form.quantity }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.unit_price.id_for_label }}">Unit Price</label>
+          {{ form.unit_price }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.unit_price.id_for_label }}">Unit Price</label>
+          {{ form.price }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<script>
+  // JavaScript to handle dynamic formset
+  // This requires jQuery
+  $(document).ready(function() {
+    $('#details-formset').formset({
+      prefix: 'details',
+      addText: 'Add More',
+      deleteText: 'Remove',
+      addCssClass: 'btn btn-secondary',
+      deleteCssClass: 'btn btn-danger',
+    });
+  });
+</script>
+
 {% endblock %}

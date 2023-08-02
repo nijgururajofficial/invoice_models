@@ -4,10 +4,12 @@
 <head>
     <title>Your App</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">Your App</a>
+        <h2><a class="navbar-brand" href="/">Invoices</a></h2>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,7 +25,7 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <div class="container mt-4 w-auto">
         {% block content %}
         {% endblock %}
     </div>

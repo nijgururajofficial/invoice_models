@@ -7,4 +7,7 @@ class InvoiceForm(forms.ModelForm):
         model = Invoice
         fields = ['date', 'invoice_no', 'customer_name']
 
-InvoiceDetailFormSet = inlineformset_factory(Invoice, InvoiceDetail, fields=['description', 'quantity', 'unit_price', 'price'], extra=1)
+class InvoiceDetailForm(forms.ModelForm):
+    class Meta:
+        model = InvoiceDetail
+        fields = ['invoice_no', 'description', 'quantity', 'unit_price', 'price']

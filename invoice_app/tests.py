@@ -1,15 +1,14 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.urls import reverse
 from rest_framework import status
-from rest_framework.test import APIClient
 from .models import Invoice
 
 class InvoiceAPITest(TestCase):
     def setUp(self):
-        self.client = APIClient()
+        self.client = Client()
 
     def test_create_invoice(self):
-        url = reverse('invoice-list')
+        url = reverse('invoice_create')
         data = {
             'date': '2023-07-14',
             'invoice_no': 'INV001',
@@ -30,8 +29,8 @@ class InvoiceAPITest(TestCase):
             ]
         }
 
-        response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(Invoice.objects.count(), 1)
         self.assertEqual(Invoice.objects.first().invoice_no, 'INV001')
         self.assertEqual(Invoice.objects.first().customer_name, 'John Doe')
